@@ -1,37 +1,30 @@
 # rewindfs-lite
 
-rewindfs-lite is a lightweight snapshot-based file versioning tool inspired by Git, Time Machine, and snapshot-oriented filesystems such as ZFS.
+rewindfs-lite is a lightweight snapshot-based file versioning tool built to explore rollback systems, file history tracking, and simplified filesystem concepts.
 
-The project explores how rollback systems and file history tracking work internally through a simplified command-line implementation.
-
-Unlike the main rewindfs project, rewindfs-lite focuses only on the core concepts:
-
-* snapshot creation
-* file version tracking
-* rollback and recovery
-* metadata storage
-* content hashing
+The project takes inspiration from tools and systems such as Git, Time Machine, and snapshot-oriented filesystems, while keeping the implementation minimal and easy to understand.
 
 ## Features
 
-* Create snapshots of files
-* Track file version history
-* Restore older file versions
-* Store metadata using JSON
-* Detect file state changes using SHA-256 hashing
+* Snapshot creation for files
+* File version history tracking
+* Rollback and recovery support
+* SHA-256 file hashing
+* JSON-based metadata indexing
+* Command-line interface
 
 ## Project Goals
 
 This project was built to better understand:
 
-* filesystem concepts
-* version control ideas
-* rollback systems
 * snapshot architecture
-* metadata indexing
-* hashing and file integrity
+* rollback systems
+* file versioning concepts
+* metadata management
+* hashing and integrity verification
+* filesystem-inspired design
 
-while keeping the implementation lightweight and easy to experiment with.
+while implementing a small but functional systems-oriented tool.
 
 ## Tech Stack
 
@@ -41,15 +34,80 @@ while keeping the implementation lightweight and easy to experiment with.
 * hashlib
 * shutil
 
-## Example Commands
+## Repository Structure
+
+```text
+rewindfs-lite/
+├── main.py
+├── README.md
+├── metadata.json
+└── snapshots/
+```
+
+## Commands
+
+Initialize the project:
 
 ```bash
-python main.py init
-python main.py snapshot test.txt
-python main.py history test.txt
-python main.py rollback test.txt 1
+python3 main.py init
 ```
+
+Create a snapshot:
+
+```bash
+python3 main.py snapshot test.txt
+```
+
+View snapshot history:
+
+```bash
+python3 main.py history test.txt
+```
+
+Rollback to an older version:
+
+```bash
+python3 main.py rollback test.txt 1
+```
+
+## Example Workflow
+
+```bash
+echo "hello world" > test.txt
+
+python3 main.py snapshot test.txt
+
+echo "second version" > test.txt
+
+python3 main.py snapshot test.txt
+
+python3 main.py history test.txt
+
+python3 main.py rollback test.txt 1
+```
+
+## How It Works
+
+Snapshots are stored as versioned copies inside the `snapshots/` directory.
+
+Metadata for each file is stored in `metadata.json`, including:
+
+* version number
+* timestamp
+* SHA-256 hash
+* snapshot filename
+
+Rollback restores a selected snapshot back into the working file.
+
+## Future Improvements
+
+* directory snapshots
+* diff viewer
+* automatic snapshots
+* deduplication
+* compressed snapshot storage
+* ignore rules similar to `.gitignore`
 
 ## Status
 
-Currently under development.
+Currently under active development.
