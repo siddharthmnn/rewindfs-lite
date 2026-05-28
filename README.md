@@ -1,38 +1,42 @@
 # rewindfs-lite
 
-rewindfs-lite is a lightweight snapshot-based file versioning tool built to explore rollback systems, file history tracking, and simplified filesystem concepts.
+rewindfs-lite is a small snapshot-based file versioning tool for exploring rollback, file history tracking, and basic filesystem-style metadata handling.
 
-The project takes inspiration from tools and systems such as Git, Time Machine, and snapshot-oriented filesystems, while keeping the implementation minimal and easy to understand.
+It is a stripped-down prototype of a larger rewindfs idea, focused on the core pieces:
+- snapshots
+- version history
+- rollback
+- file hashing
+- JSON metadata
 
 ## Features
 
-* Snapshot creation for files
-* File version history tracking
-* Rollback and recovery support
-* SHA-256 file hashing
-* JSON-based metadata indexing
-* Command-line interface
+- Snapshot creation for files
+- File version history tracking
+- Rollback to older versions
+- SHA-256 hashing for integrity checks
+- JSON-based metadata storage
+- Simple command-line interface
 
-## Project Goals
+## Why I built it
 
-This project was built to better understand:
+I wanted a small project that shows how versioned file recovery works without turning into a huge codebase.
 
-* snapshot architecture
-* rollback systems
-* file versioning concepts
-* metadata management
-* hashing and integrity verification
-* filesystem-inspired design
-
-while implementing a small but functional systems-oriented tool.
+This project is mainly about understanding:
+- snapshot architecture
+- rollback systems
+- file versioning
+- metadata indexing
+- hashing and integrity checks
+- filesystem-inspired design
 
 ## Tech Stack
 
-* Python
-* JSON
-* File I/O
-* hashlib
-* shutil
+- Python
+- JSON
+- File I/O
+- hashlib
+- shutil
 
 ## Repository Structure
 
@@ -88,14 +92,13 @@ python3 main.py rollback test.txt 1
 
 ## How It Works
 
-Snapshots are stored as versioned copies inside the `snapshots/` directory.
+Each snapshot is stored as a versioned copy inside the `snapshots/` directory.
 
-Metadata for each file is stored in `metadata.json`, including:
-
-* version number
-* timestamp
-* SHA-256 hash
-* snapshot filename
+For every file, `metadata.json` stores:
+- version number
+- timestamp
+- SHA-256 hash
+- snapshot filename
 
 Rollback restores a selected snapshot back into the working file.
 
@@ -105,13 +108,17 @@ Rollback restores a selected snapshot back into the working file.
 
 ## Future Improvements
 
-* directory snapshots
-* diff viewer
-* automatic snapshots
-* deduplication
-* compressed snapshot storage
-* ignore rules similar to `.gitignore`
+- directory snapshots
+- diff viewer
+- automatic snapshots
+- deduplication
+- compressed snapshot storage
+- ignore rules similar to `.gitignore`
 
 ## Status
 
 Still experimenting with rollback and snapshot ideas.
+
+## Author
+
+Siddharth S Menon
