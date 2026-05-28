@@ -99,6 +99,10 @@ Metadata for each file is stored in `metadata.json`, including:
 
 Rollback restores a selected snapshot back into the working file.
 
+## Demo
+
+![rewindfs-lite demo](screenshots/demo.png)
+
 ## Future Improvements
 
 * directory snapshots
