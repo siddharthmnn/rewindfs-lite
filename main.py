@@ -54,7 +54,7 @@ def init():
 
     print("[+] rewindfs-lite initialized")
 
-
+# TODO: support directory snapshots later
 def snapshot(filepath):
 
     if not os.path.exists(filepath):
