@@ -1,0 +1,7 @@
+**pycache**/
+*.pyc
+.DS_Store
+
+metadata.json
+snapshots/
+test.txt
