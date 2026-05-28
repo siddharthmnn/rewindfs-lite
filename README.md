@@ -110,4 +110,4 @@ Rollback restores a selected snapshot back into the working file.
 
 ## Status
 
-Currently under active development.
+Still experimenting with rollback and snapshot ideas.
